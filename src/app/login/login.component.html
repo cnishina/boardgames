@@ -1,0 +1,17 @@
+<div *ngIf="!user">
+  <button (click)="login('google')">
+    use my google account
+  </button>
+  <button (click)="login('twitter')">
+    use my twitter account
+  </button>
+  <button (click)="login('facebook')">
+    use my facebook account
+  </button>
+</div>
+<div *ngIf="user">
+  Hello {{displayName}}! You are logged in with {{provider}}.
+  <button (click)="logout()">
+    logout
+  </button>
+</div>

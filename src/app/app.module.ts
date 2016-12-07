@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login';
 import { firebaseConfig } from './app.firebase';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
