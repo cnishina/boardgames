@@ -1,4 +1,4 @@
-<div *ngIf="!user">
+<div *ngIf="!profile">
   <button (click)="login('google')">
     use my google account
   </button>
@@ -9,9 +9,11 @@
     use my facebook account
   </button>
 </div>
-<div *ngIf="user">
-  Hello {{displayName}}! You are logged in with {{provider}}.
+<div *ngIf="profile">
+  Hello {{profile.displayName}}! You are logged in with {{profile.providerId}}.
   <button (click)="logout()">
     logout
   </button>
+
+  <profile-root [profile]="profile">Loading...</profile-root>
 </div>

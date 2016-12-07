@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AngularFire, AuthMethods, AuthProviders } from 'angularfire2';
+import { AngularFire, AuthMethods, AuthProviders, FirebaseAuthState } from 'angularfire2';
+
+import { ProfileModel } from '../shared/';
 
 @Component({
   selector: 'login-root',
@@ -7,23 +9,29 @@ import { AngularFire, AuthMethods, AuthProviders } from 'angularfire2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  user: any = null;
-  provider: string = null;
-  displayName: string = null;
-  loginException: string = null
+  profile: ProfileModel = null;
 
   constructor(public af: AngularFire) {
-    this.af.auth.subscribe(user => {
+    this.authSubscription_();
+  }
+
+  authSubscription_() {
+    this.af.auth.subscribe((user: FirebaseAuthState) => {
       if (user) {
-        // user logged in
-        this.user = user;
-        this.displayName = user.auth.displayName;
-        this.provider = user.auth.providerData[0].providerId;
-        console.log('login', this.user);
+        this.profile = new ProfileModel();
+        this.profile.uid = user.uid;
+        this.profile.displayName = user.auth.displayName;
+        this.profile.providerId = user.auth.providerData[0].providerId;
+        this.profile.photoUrl = user.auth.photoURL;
+        let afProfile = this.af.database.object('/profile/' + this.profile.uid);
+        afProfile.update(this.profile);
+        console.log('profile', this.profile);
+        console.log('user', user);
+
+        // write profile information to firebase. no-op if it exists
       } else {
         // user not logged in
-        this.user = null;
-        this.provider = null;
+        this.profile = null;
         console.log('logout');
       }
     });
@@ -44,7 +52,6 @@ export class LoginComponent {
   }
 
   logout() {
-    this.provider = null;
     this.af.auth.logout();
   }
 }
