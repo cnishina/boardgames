@@ -1,0 +1,17 @@
+<div *ngIf="contacts">
+  <ul>
+    <li *ngFor="let contact of contacts">
+
+      <div>
+        {{contact.uid}}
+      </div>
+      <div>
+        {{contact.displayName}}
+      </div>
+      <div>
+        {{contact.photoUrl}}
+      </div>
+
+    </li>
+  </ul>
+</div>

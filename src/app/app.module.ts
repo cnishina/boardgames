@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
+import { ContactsComponent } from './contacts/';
 import { LoginComponent } from './login/';
 import { ProfileComponent } from './profile/';
 
@@ -13,6 +14,7 @@ import { firebaseConfig } from './app.firebase';
 @NgModule({
   declarations: [
     AppComponent,
+    ContactsComponent,
     LoginComponent,
     ProfileComponent,
   ],
