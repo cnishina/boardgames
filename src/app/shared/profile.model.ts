@@ -3,4 +3,5 @@ export class ProfileModel {
   displayName: string;
   providerId: string;
   photoUrl: string;
+  screenName: string;
 }

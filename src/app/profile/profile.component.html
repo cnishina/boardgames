@@ -2,15 +2,26 @@
 <br/>
 <div *ngIf="profile">
   <div>
-    {{profile.uid}}
-  </div>
-  <div>
     <img src="{{profile.photoUrl}}" width="200"/>
   </div>
   <div>
+    <label>uid:</label>
+    {{profile.uid}}
+  </div>
+  <div>
+    <label>name:</label>
     {{profile.displayName}}
   </div>
   <div>
+    <label>provider:</label>
     {{profile.providerId}}
   </div>
+  <div>
+    <label>screen name:</label>
+    <span *ngIf="!editMode">{{profile.screenName}}</span>
+    <span *ngIf="editMode"><input type="text" [(ngModel)]="profile.screenName"></span>
+  </div>
+</div>
+<div>
+  <button (click)="editMode = !editMode">toggle profile</button>
 </div>

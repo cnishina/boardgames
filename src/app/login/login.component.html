@@ -3,13 +3,18 @@
     use my google account
   </button>
 </div>
+
+<div *ngIf="profile && newlyCreated">
+  <div>Hi {{profile.displayName}}</div>
+  <div>
+    <label>screen name</label><input [(ngModel)]="profile.screenName">
+    <button (click)="createProfile()">continue</button>
+  </div>
+</div>
+
 <div *ngIf="profile">
   Hello {{profile.displayName}}! You are logged in with {{profile.providerId}}.
   <button (click)="logout()">
     logout
   </button>
-
-  <profile-root [profile]="profile">Loading...</profile-root>
-
-  <contacts-root [profile]="profile">Loading...</contacts-root>
 </div>

@@ -18,7 +18,7 @@ export class ContactsComponent implements OnInit {
       if (contacts) {
         for (let key of Object.keys(contacts)) {
           // ignore extra firebase stuff
-          if (key !== '$key' && key !== '$exists' && key !== '$value') {
+          if (key.charAt(0) !== '$') {
             if (this.contacts == null) {
               this.contacts = [];
             }

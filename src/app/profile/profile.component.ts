@@ -8,4 +8,8 @@ import { ProfileModel } from '../shared/';
 export class ProfileComponent {
   @Input()
   profile: ProfileModel;
+
+  name: string;
+
+  
 }
