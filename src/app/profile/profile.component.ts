@@ -1,15 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { ProfileModel } from '../shared/';
+import { Component, OnInit } from '@angular/core';
+import { AuthService, ProfileModel } from '../shared/';
 
 @Component({
   selector: 'profile-root',
   templateUrl: './profile.component.html',
 })
-export class ProfileComponent {
-  @Input()
+export class ProfileComponent implements OnInit {
   profile: ProfileModel;
 
-  name: string;
+  constructor(public as: AuthService) { }
 
-  
+  ngOnInit() {
+    this.as.authSubscription(this.profile, (profile: ProfileModel) => {
+      this.profile = profile;
+    });
+  }
 }

@@ -11,6 +11,7 @@ import { FeedComponent } from './feed';
 import { LoginComponent } from './login/';
 import { ProfileComponent } from './profile/';
 import { SearchComponent } from './search';
+import { AuthService } from './shared/';
 
 import { appFirebase } from './app.firebase';
 import { appRoutes } from './app.routing';
@@ -31,7 +32,9 @@ import { appRoutes } from './app.routing';
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    AuthService,
+  ],
   bootstrap: [
     AppComponent
   ]

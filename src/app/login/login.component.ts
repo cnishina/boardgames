@@ -1,55 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFire, AuthMethods, AuthProviders, FirebaseAuthState, FirebaseObjectObservable } from 'angularfire2';
-
-import { ProfileModel } from '../shared/';
+import { AngularFire, AuthMethods, AuthProviders } from 'angularfire2';
+import { AuthService, ProfileModel } from '../shared/';
 
 @Component({
   selector: 'login-root',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-  profile: ProfileModel = null;
-  newlyCreated: boolean = false;
-  afProfile: FirebaseObjectObservable<any>;
+export class LoginComponent implements OnInit {
+  profile: ProfileModel;
 
-  constructor(public af: AngularFire, public router: Router) {
-    this.authSubscription();
-  }
+  constructor(public as: AuthService, public af: AngularFire, public router: Router) { }
 
-  /**
-   * Check the login state of the user.
-   */
-  authSubscription() {
-    this.af.auth.subscribe(user => {
-      if (user) {
-        this.profile = new ProfileModel();
-        this.profile.uid = user.uid;
-        this.profile.displayName = user.auth.displayName;
-        this.profile.providerId = user.auth.providerData[0].providerId;
-        this.profile.photoUrl = user.auth.photoURL;
-
-        // If the user is logged in, check firebase for a profile.
-        this.afProfile = this.af.database.object('/profile/' + this.profile.uid);
-        this.afProfile.subscribe(subProfile => {
-          console.log(subProfile);
-          // If the profile does not have a screen name, it is a new account and we need
-          // to set a screen name.
-          if (subProfile.screenName === undefined) {
-            console.log('newly created');
-            this.newlyCreated = true;
-            this.afProfile.update(this.profile);
-          } else {
-            // The profile and screen name have been completed, navigate to the feed.
-            this.router.navigate(['feed']);
-          }
-        });
-      } else {
-        // The user is not logged in
-        this.profile = null;
-        console.log('logout');
-      }
+  ngOnInit() {
+    this.as.authSubscription(this.profile, (profile: ProfileModel) => {
+      this.profile = profile;
     });
   }
 
@@ -63,7 +29,7 @@ export class LoginComponent {
       // Assign the screen name since it is not associated with a profile.
       if (subUid.uid === undefined) {
         sn.update({uid: this.profile.uid});
-        this.afProfile.update(this.profile);
+        this.af.database.object('/profile/' + this.profile.uid).update(this.profile);
         this.router.navigate(['feed']);
       } else {
         // TODO(cnishina): Report an error
