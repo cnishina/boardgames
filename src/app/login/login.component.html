@@ -11,10 +11,3 @@
     <button (click)="createProfile()">continue</button>
   </div>
 </div>
-
-<div *ngIf="profile">
-  Hello {{profile.displayName}}! You are logged in with {{profile.providerId}}.
-  <button (click)="logout()">
-    logout
-  </button>
-</div>

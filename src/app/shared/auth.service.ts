@@ -32,8 +32,8 @@ export class AuthService {
           } else {
             // The profile and screen name have been completed, do the callback
             profile.screenName = subProfile.screenName;
-            callback(profile);
           }
+          callback(profile);
         });
       } else {
         // The user is not logged in

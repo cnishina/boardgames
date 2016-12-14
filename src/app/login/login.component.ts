@@ -10,12 +10,16 @@ import { AuthService, ProfileModel } from '../shared/';
 })
 export class LoginComponent implements OnInit {
   profile: ProfileModel;
+  newlyCreated: boolean = false;
 
   constructor(public as: AuthService, public af: AngularFire, public router: Router) { }
 
   ngOnInit() {
     this.as.authSubscription(this.profile, (profile: ProfileModel) => {
       this.profile = profile;
+      if (this.profile.screenName === undefined) {
+        this.newlyCreated = true;
+      }
     });
   }
 
