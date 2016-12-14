@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
       this.profile = profile;
       if (this.profile.screenName === undefined) {
         this.newlyCreated = true;
+      } else {
+        this.router.navigate(['feed']);
       }
     });
   }
