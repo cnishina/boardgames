@@ -60,11 +60,4 @@ export class LoginComponent implements OnInit {
     }
     this.af.auth.login(loginConfig);
   }
-
-  /**
-   * On logout.
-   */
-  logout() {
-    this.af.auth.logout();
-  }
 }

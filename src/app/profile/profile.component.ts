@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFire } from 'angularfire2';
 import { AuthService, ProfileModel } from '../shared/';
 
 @Component({
@@ -8,11 +10,19 @@ import { AuthService, ProfileModel } from '../shared/';
 export class ProfileComponent implements OnInit {
   profile: ProfileModel;
 
-  constructor(public as: AuthService) { }
+  constructor(public af: AngularFire, public as: AuthService, public router: Router) { }
 
   ngOnInit() {
     this.as.authSubscription(this.profile, (profile: ProfileModel) => {
       this.profile = profile;
     });
+  }
+
+  /**
+   * On logout.
+   */
+  logout() {
+    this.af.auth.logout();
+    this.router.navigate(['login']);
   }
 }

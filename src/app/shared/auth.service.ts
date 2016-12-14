@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AngularFire } from 'angularfire2';
 import { ProfileModel } from './profile.model';
@@ -6,7 +7,7 @@ import { ProfileModel } from './profile.model';
 @Injectable()
 export class AuthService {
 
-  constructor(public af: AngularFire) { }
+  constructor(public af: AngularFire, public router: Router) { }
 
   /**
    * Check the login state of the user.
@@ -23,7 +24,6 @@ export class AuthService {
         // If the user is logged in, check firebase for a profile.
         let afProfile = this.af.database.object('/profile/' + profile.uid);
         afProfile.subscribe(subProfile => {
-          console.log(subProfile);
           // If the profile does not have a screen name, it is a new account and we need
           // to set a screen name.
           if (subProfile.screenName === undefined) {
@@ -39,6 +39,7 @@ export class AuthService {
         // The user is not logged in
         profile = null;
         console.log('logout');
+        this.router.navigate(['login']);
       }
     });
   }
