@@ -1,6 +1,10 @@
+<br/>
 <div>
-  <textarea rows="5" cols="60"></textarea>
-</div>
-<div>
-  <button>update</button>
+  <div *ngFor="let status of statusList">
+    timestamp: {{status.timestamp}}<br/>
+    posted by: {{status.postedBy}}<br/>
+    text: {{status.text}}<br/>
+    tags: {{status.tags}}<br/>
+    <br/><br/>
+  </div>
 </div>

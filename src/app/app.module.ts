@@ -27,6 +27,7 @@ import { appRoutes } from './app.routing';
     ProfileComponent,
     SearchComponent,
     StatusComponent,
+    UpdateComponent
   ],
   imports: [
     AngularFireModule.initializeApp(appFirebase),
