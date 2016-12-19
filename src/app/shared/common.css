@@ -1,0 +1,36 @@
+.column {
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.dark-primary {
+  background-color: #303F9F;
+}
+
+.primary {
+  background-color: #3F51B5;
+}
+
+.light-primary {
+  background-color: #C5CAE9;
+}
+
+.text {
+  color: #FFFFFF;
+}
+
+.accent-color {
+  background-color: #FFC107;
+}
+
+.primary-text {
+  color: #212121;
+}
+
+.secondary-text {
+  color: #757575;
+}
+
+.divider-color {
+  color: #BDBDBD;
+}

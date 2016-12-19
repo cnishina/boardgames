@@ -1,0 +1,25 @@
+.app-title {
+  width:30%;
+}
+.app-title-search {
+  padding-top: 10px;
+}
+
+.app-accent-bar {
+  height: 10px;
+}
+
+.app-title-bar {
+  padding: 10px;
+}
+
+.app-logo {
+  width: 40px;
+}
+
+.app-input {
+  border: none;
+  padding: 2px;
+  height: 2em;
+  width: 12em;
+}
