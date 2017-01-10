@@ -6,6 +6,9 @@ import { AuthService, ProfileModel } from '../shared/';
 @Component({
   selector: 'profile-root',
   templateUrl: './profile.component.html',
+  styleUrls: [
+    './profile.component.css',
+  ],
 })
 export class ProfileComponent implements OnInit {
   profile: ProfileModel;

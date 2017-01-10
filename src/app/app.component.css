@@ -1,0 +1,30 @@
+.app-title {
+  width:30%;
+  color: white;
+  font-size: 30px;
+}
+.app-title-search {
+  padding-top: 10px;
+}
+.app-span {
+  vertical-align: middle;
+  display: inline-block;
+}
+.app-accent-bar {
+  height: 10px;
+}
+
+.app-title-bar {
+  padding: 10px;
+}
+
+.app-logo {
+  width: 40px;
+}
+
+.app-input {
+  border: none;
+  padding: 2px;
+  height: 2em;
+  width: 12em;
+}
