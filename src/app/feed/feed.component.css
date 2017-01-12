@@ -1,4 +1,15 @@
-.feed {
+.feed-side-panel {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.feed-main {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.feed-input {
+  width: 300px;
 }
 
 .column {

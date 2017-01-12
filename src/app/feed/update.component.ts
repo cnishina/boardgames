@@ -5,6 +5,9 @@ import { AuthService, ProfileModel, StatusModel } from '../shared';
 @Component({
   selector: 'update-root',
   templateUrl: './update.component.html',
+  styleUrls: [
+    './feed.component.css'
+  ]
 })
 export class UpdateComponent implements OnInit {
   profile: ProfileModel;

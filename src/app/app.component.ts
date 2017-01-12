@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 
 /**
  * The main app component.
@@ -13,4 +14,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'boardgames!';
+  searchUser: string = '';
+
+  constructor(public router: Router) { }
+
+  search() {
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'screenname': this.searchUser },
+    }
+    this.router.navigate(['search'], navigationExtras);
+  }
 }

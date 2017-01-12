@@ -6,7 +6,8 @@ import { AuthService, ProfileModel } from '../shared/';
 @Component({
   selector: 'search-root',
   templateUrl: './search.component.html',
-  styleUrls: ['./feed.common.css'],
+  styleUrls: [
+  ],
 })
 export class SearchComponent implements OnInit{
   profile: ProfileModel;
