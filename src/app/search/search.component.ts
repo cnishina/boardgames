@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
 import { AuthService, ProfileModel } from '../shared/';
+
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'search-root',
@@ -14,9 +16,14 @@ export class SearchComponent implements OnInit{
   searchProfile: ProfileModel;
   query: string;
 
-  constructor(public af: AngularFire, public as: AuthService, public router: Router) { }
+  constructor(public af: AngularFire, public as: AuthService,
+    public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.map(params => {
+      console.log(params['screenname']);
+    });
+
     this.as.authSubscription(this.profile, (profile: ProfileModel) => {
       this.profile = profile;
     });
