@@ -1,21 +1,31 @@
-<div class="dark-primary app-accent-bar">
-</div>
+<div class="dark-primary app-accent-bar"></div>
 <div class="primary app-title-bar">
   <div class="column app-title">
-    <span class="app-span"><img class="app-logo" src="assets/boardgames.png"/></span>
-    <span class="app-span">boardgames</span>
+    <span class="app-span">
+      <a routerLink="/">
+        <img class="app-logo" src="assets/boardgames.png"/>
+      </a>
+    </span>
+    <span class="app-span">
+      <a class="app-link" routerLink="/">
+        boardgames
+      </a>
+    </span>
   </div>
   <div class="app-menu">
     <span class="app-span">
-      <input [(ngModel)]="searchUser" style="margin-bottom: 5px;">
+      <input [(ngModel)]="query" style="margin-bottom: 5px;">
       <a (click)="search()"><i class="material-icons" style="font-size: 20px; position: relative; top: 6px">search</i></a>
       |
-      <i class="material-icons" style="font-size: 20px; position: relative; top: 6px">subject</i>
-      feed
+      <a class="app-link" routerLink="/feed">
+        <i class="material-icons" style="font-size: 20px; position: relative; top: 6px">subject</i>
+        feed
+      </a>
       |
-      <i class="material-icons" style="font-size: 20px; position: relative; top: 6px">account_circle</i>
-      profile
-
+      <a class="app-link" routerLink="/profile">
+        <i class="material-icons" style="font-size: 20px; position: relative; top: 6px">account_circle</i>
+        profile
+      </a>
     </span>
   </div>
 </div>

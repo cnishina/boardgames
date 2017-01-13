@@ -3,9 +3,11 @@
   color: white;
   font-size: 30px;
 }
+
 .app-title-search {
   padding-top: 10px;
 }
+
 .app-menu {
   display: inline-block;
 }
@@ -15,6 +17,21 @@
   display: inline-block;
   color: white;
 }
+
+.app-link {
+  color: white;
+}
+
+.app-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.app-link:link {
+  color: white;
+  text-decoration: none;
+}
+
 .app-accent-bar {
   height: 10px;
 }

@@ -1,26 +1,21 @@
-<div class="form-group">
-  <input class="feed-input form-control" type="text" id="name" [(ngModel)]="query">
-
-  <button (click)="search()">search</button>
-  <button *ngIf="searchProfile" (click)="clear()">clear</button>
-</div>
-<br/>
-<div *ngIf="searchProfile">
-  <div class="column">
-    <img src="{{searchProfile.photoUrl}}" width="50"/>
-  </div>
-  <div class="column">
-    <div>
-      <label>name:</label>
-      {{searchProfile.displayName}}
+<div class="searchprofile">
+  <div *ngIf="searchProfile">
+    <div class="column">
+      <img src="{{searchProfile.photoUrl}}" width="100"/>
     </div>
-    <div>
-      <label>screen name:</label>
-      {{searchProfile.screenName}}
+    <div class="column">
+      <div>
+        <label>name:</label>
+        {{searchProfile.displayName}}
+      </div>
+      <div>
+        <label>screen name:</label>
+        {{searchProfile.screenName}}
+      </div>
     </div>
-  </div>
-  <div class="column">
-    <button (click)="addFriend()">send friend request</button>
-    <button>cancel</button>
+    <div class="column">
+      <button (click)="addFriend()">send friend request</button>
+      <button>cancel</button>
+    </div>
   </div>
 </div>
